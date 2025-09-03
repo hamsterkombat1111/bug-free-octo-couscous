@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Test Site{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Добро пожаловать на тестовый сайт</h1>
+    <p>Интеграция с Telegram ботом + админ-панель</p>
+    <div class="hero-buttons">
+        <a href="{{ url_for('programs') }}" class="btn btn-primary">Смотреть программы</a>
+        <a href="{{ url_for('contact') }}" class="btn btn-secondary">Связаться с нами</a>
+    </div>
+</div>
+
+<div class="recent-programs">
+    <h2>Последние программы</h2>
+    <div class="programs-grid">
+        {% for program in programs %}
+        <div class="program-card">
+            <h3>{{ program[1] }}</h3>
+            <p class="program-category">{{ program[2] }}</p>
+            <p class="program-desc">{{ program[3][:100] }}...</p>
+            <a href="{{ program[5] }}" class="btn btn-small">Скачать v{{ program[4] }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

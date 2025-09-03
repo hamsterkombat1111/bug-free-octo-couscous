@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Админ-панель - Test Site{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Админ-панель</h1>
+    
+    <div class="admin-stats">
+        <div class="stat-card">
+            <h3>Программ</h3>
+            <p class="stat-number">{{ program_count }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Новых сообщений</h3>
+            <p class="stat-number">{{ unread_messages }}</p>
+        </div>
+    </div>
+
+    <div class="admin-actions">
+        <a href="{{ url_for('admin_programs') }}" class="btn btn-primary">Управление программами</a>
+        <a href="{{ url_for('add_program') }}" class="btn btn-success">Добавить программу</a>
+    </div>
+
+    <div class="recent-messages">
+        <h2>Последние сообщения</h2>
+        {% for message in messages %}
+        <div class="message-card">
+            <h4>{{ message[1] }} ({{ message[2] }})</h4>
+            <p>{{ message[3] }}</p>
+            <small>{{ message[4] }}</small>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

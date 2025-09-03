@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Test Site{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="{{ url_for('index') }}">TestSite</a>
+            </div>
+            <div class="nav-menu">
+                <a href="{{ url_for('index') }}">Главная</a>
+                <a href="{{ url_for('programs') }}">Программы</a>
+                <a href="{{ url_for('contact') }}">Контакты</a>
+                <a href="{{ url_for('admin_login') }}">Админка</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Test Site. Все права защищены.</p>
+    </footer>
+</body>
+</html>
